@@ -1,0 +1,114 @@
+<%= form_with(url: inquiries_path, method: :post) do |form| %>
+
+    <div class="form px-3 px-md-5">
+      <div class="row py-5">
+        <div class="col-md-12">
+        </div>
+      </div>
+     
+      <div class="row mb-4">
+        <div class="col-md-12">
+        <p class="m-0 small">Destination</p>
+        <h4><%= @inquiry.tour&.destination_name  %>  </h4>        
+        </div>
+      </div>
+
+       <div class="row mb-4">
+        <div class="col-md-12">
+        <%= form.label :title %>
+          <%= form.text_field :title, class: "form-control", value: @inquiry.title, readonly: true %>
+        </div>
+      </div>
+    
+      <div class="row mb-4">
+        <div class="col-md-12">
+        <%= form.label :first_name %>
+          <%= form.text_field :first_name, class: "form-control", value: @inquiry.first_name, readonly: true %>
+        </div>
+      </div>
+
+    <div class="row mb-4">
+      <div class="col-md-12">
+      <%= form.label :last_name %>
+      <%= form.text_field :last_name, class: "form-control", readonly: true, value: @inquiry.last_name, readonly: true %>
+      </div>
+    </div>
+
+
+    
+      <div class="row mb-4">
+        <div class="col-md-12">
+        <%= form.label :country %>
+         <%= form.text_field :country, class: "form-control", value: @inquiry.country, readonly: true %>
+         </div>
+      </div>
+    
+    
+    <div class="row mb-4">
+        <div class="col-md-12">
+        <%= form.label :price %>
+         <%= form.text_field :price, class: "form-control", value: @inquiry.price, readonly: true %>
+         </div>
+      </div>
+
+
+    <div class="row mb-4">
+      <div class="col-md-12">
+      <%= form.label :phone %>
+      <%= form.text_field :phone, class: "form-control", value: @inquiry.phone, readonly: true %>
+    </div>
+    </div>
+    
+    
+      <div class="row mb-4">
+        <div class="col-md-12">
+        <%= form.label :email %>
+        <%= form.email_field :email, class: "form-control", value: @inquiry.email, readonly: true %>
+      </div>
+      </div>
+
+    <div class="row mb-4">
+      <div class="col-md-12">
+      <%= form.label :trip_idea %><br>
+      <%= form.text_field :trip_idea, class: "form-control", value: @inquiry.trip_idea.name, readonly: true %>
+      </div>
+    </div>
+
+      <div class="row mb-4">
+        <div class="col-md-12">
+        <p class="m-0 small">How should we contact you?*</p>
+        <%= form.text_field :contact_method, class: "form-control", value: @inquiry.contact_method, readonly: true %>
+        </div>
+      </div>
+    
+      <div class="row mb-4">
+        <div class="col-md-12">
+        <p class="m-0 small">Number of passengers*</p>
+        <%= form.number_field :no_of_passenger, min:1, class: "form-control", value: @inquiry.no_of_passenger, readonly: true %>
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <p class="m-0 small">Date of departure*</p>
+      <div class="col-md-12">
+      <%= form.date_select :departure_date, {}, value: @inquiry.departure_date, class: "selectBorder" %> 
+      </div>
+    </div>
+    
+    
+      <div class="row mb-4">
+    
+        <div class="col-md-12">
+          <p class="m-0 small">Description*</p>
+          <%= form.text_area :description, class: "form-control", value: @inquiry.description, readonly: true %> 
+        </div>
+      </div>
+    
+      <div class="row pb-4 mb-2">
+        <div class="col-md-6">
+          </div>
+      </div>
+    
+    </div>
+    
+    <% end %>

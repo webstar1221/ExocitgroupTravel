@@ -1,0 +1,30 @@
+
+
+<section class="finderForm" id="search">
+
+<%= form_with url: "/search", method: :get do |form| %>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-md-3 mt-2 mt-md-0">
+        <div class="feildDiv">
+          <i class="fa-solid fa-globe"></i> 
+          <%= form.select(:country, options_for_select(Country.active.map{|c|[c.name, c.name]}, params[:country]), { prompt: "Select Country" },  { :class => 'js-example-basic-single w-100 select2 destSelect"' }) %>   
+        </div>
+      </div>
+      <div class="col-sm-10 col-md-6 mt-2 mt-md-0">
+      
+      <div class="feildDiv">
+        <%= form.text_field :query, class: "form-control", value: params[:query] %>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-3 mt-2 mt-md-0 ">
+        <button class="findBtn">Find My Trip!</button>
+      </div>
+    </div>
+  </div>
+
+<% end %>
+</section>
+
+

@@ -1,0 +1,44 @@
+<div class="content-wrapper">
+    <div class="container-xxl flex-grow-1 container-p-y">
+    <%= render 'shared/messages' %>
+      <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Admin /</span> Countries</h4>
+
+      <%= link_to 'New Country', new_admin_country_path,class: 'btn btn-primary mb-3  ' %></td>
+      <div class="card">
+        <h5 class="card-header">Countries</h5>
+        <div class="table-responsive text-nowrap">
+
+          <table class="table" id="dataTable">
+            <thead>
+              <tr>
+                <th>Sr.No</th>
+                <th>Country</th>
+                <th>Region</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                <% @countries.each_with_index do |country, index| %>
+                <tr>
+                    <td><%= index+1 %>  </td>
+                    <td><%= country.name %>  </td>
+                    <% if country.region.present? %>
+                    <td><%= country.region.region_name  %>  </td>
+                    <% else %>
+                    <td> Not found </td>
+                    <% end %>
+                    <td><span class="badge bg-label-info me-1"><%= country.active  %></span></td>
+                    <td class="d-flex">
+                    <%= button_to "Edit",  edit_admin_country_path(country), method: :get,  class: "btn btn-primary btn-sm"  %>
+                    <%= button_to "Delete",  admin_country_path(country), method: :delete, class: "btn btn-warning btn-sm"  %>
+                    </td>
+                </tr>
+                <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+   
+   
+    </div>

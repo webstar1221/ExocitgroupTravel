@@ -1,0 +1,87 @@
+<section class="mainSlider">
+
+<div class="videoContainer mt-0">
+  <%= video_tag "motor.mp4", class:"video", id:"video1", autoplay: true, muted: true %>
+</video>
+<div class="videoContainer mt-0">
+  <%= video_tag "highWay.mp4", class:"video hide", id:"video2", muted: true  %>
+</div>
+<div class="videoContainer mt-0">
+  <%= video_tag "elephants.mp4", class:"video hide", id:"video3", muted: true   %>
+</div>
+
+<div class="overlay">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 d-none d-md-block text-center">
+        <span class="white upperLine text-center"> LET US SHOW YOU</span>
+        <h1 class="bannerHeading white mt-2">THE WORLD</h1>
+      </div>
+
+      <div class="col-md-8 mx-auto mb-2 text-center">
+      </div>
+
+      <div class="col-md-8 mx-auto text-center mt-2 mt-md-4">
+          <%= link_to 'Leave a Message' , leavemessage_path, class: 'bannerBtn center' %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>  
+</section>
+
+<%= render partial: 'shared/search'  %>
+
+ 
+
+<section class="destinations">
+
+  <div class="container-fluid px-md-3">
+
+    <div class="row">
+
+      <div class="col-lg-2  mt-lg-3">
+      <%# <%= render partial: "shared/filters" %> 
+      </div>
+
+
+      <div class="col-lg-9">
+        <div class="row mt-5">
+
+          <div class="col-lg-8 px-1">
+            <h1 class="headingOne yellow ">EXPLORE THE WORLD YOUR WAY</h1>
+          </div>
+          <div class="col-lg-8 ">
+          </div>
+
+          <div class="col-lg-12 p-0">
+            <hr>
+          </div>
+
+          <div class="col-lg-12">
+            <h1 class="headingOne main capitilize">All Trips</h1>
+          </div>
+
+
+          <% @tours.each do |tour| %>
+            <div class="col-md-4 mt-3">
+            <%= render partial: "shared/tour", locals: {tour: tour} %>
+            </div>
+         <% end %>
+
+        
+        
+        </div>
+
+        <div class="row d-flex align-items-center justify-content-center">
+        <div class="col-md-3">
+        <%= link_to 'View All Tours', all_tours_path, class: 'bannerBtn d-block' %></td>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</section>

@@ -1,0 +1,57 @@
+<%= form_for [:admin, @tour] do |form| %>
+
+    <div class="form-group">
+    <%= form.label :country_id %><br>
+    <%= form.select(:country_id, options_for_select(Country.active.map{|c|[c.name, c.id]}, { selected: @tour.country&.id }), {}, { :class => 'form-control' }) %>
+    </div>
+
+    <div class="form-group">
+    <%= form.label :trip_idea_id %><br>
+    <%= form.select(:trip_idea_id, options_for_select(TripIdea.active.map{|c|[c.name, c.id]}, { selected: @tour&.trip_idea_id }), {}, { :class => 'form-control' }) %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :destination_name %><br>
+      <%= form.text_field :destination_name, class: "form-control", placeholder: "Destination" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :short_description %> Max 250 characters <br>
+      <%= form.text_field :short_description, class: "form-control", placeholder: "Short Description", maxlength: "250" %>
+    </div>
+
+    <div class="form-group">
+    <%= form.label :description %><br>
+    <%= form.cktext_area :description, class: "form-control", placeholder: "Description" %>
+    </div>
+
+    <div class="form-group">
+    <%= form.label :price %><br>
+    <%= form.number_field :price, class: "form-control", placeholder: "Price" %>
+    </div>
+
+    <div class="form-group">
+    <%= form.label :duration %><br>
+    <%= form.number_field :duration, class: "form-control", placeholder: "Duration" %>
+    </div>
+
+    <div class="form-group">
+    <%= form.label :featured, 'Featured', class: 'form-label' %><br/>
+    <%= form.select(:featured, options_for_select([['True', true], ['False', false]], {selected: :featured}),   {}, { class: 'form-control'})  %>
+    </div>
+
+    <div class="form-group">
+    <%= form.label :cover_image %><br />
+    <%= form.file_field :cover_image %>
+    </div>
+
+    <div class="form-group">
+    <%= form.label :images %><br />
+    <%= form.file_field :images, multiple: true %>
+    </div>
+  
+
+    <div>
+      <%= form.submit class: "btn btn-primary mt-2" %>
+    </div>
+  <% end %>

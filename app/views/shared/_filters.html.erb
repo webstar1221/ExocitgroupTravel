@@ -1,0 +1,27 @@
+
+        <div class="customCard heightAuto p-3">
+          <h3 class="headingTwo  d-none d-lg-block mt-4">Filters</h3>
+
+          <div class="filters" id="filters">
+            <%= form_with(url: filter_path, method: :get) do |form| %>
+
+            <div class="form-group">
+              <%= form.label :country %><br>
+              <%= form.select(:country, options_for_select(Country.active.map{|c|[c.name, c.name]}), { prompt: "Select Country" }, { :class => 'form-control', :required => true }) %>
+            </div><br>
+
+            <div class="form-group">
+              <%= form.label :duration %>(Days) <br>
+              <%= form.select(:duration, options_for_select(['10-30','30-60','60-90'], @duration), { prompt: "Select Duration (Days)" }, { :class => 'form-control' }) %>
+            </div><br>
+
+              <div class="form-group">
+              <%= form.label :price %> (USD)<br>
+              <%= form.select(:price, options_for_select(['1000-3000','3000-6000','6000-9000'], @price), { prompt: "Select Price Range" }, { :class => 'form-control' }) %>
+            </div>
+            
+            <%= form.submit  class: 'bannerBtn w-100 d-block', value: 'Apply' %>
+            <% end %>
+
+          </div>
+        </div>

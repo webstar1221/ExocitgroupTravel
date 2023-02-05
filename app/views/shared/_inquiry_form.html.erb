@@ -1,0 +1,140 @@
+<%= form_with(url: inquiries_path, method: :post) do |form| %>
+
+<div class="form px-3 px-md-5">
+  <div class="row py-5">
+    <div class="col-md-12">
+      <p class="small justify">Please note * denotes fields that are mandatory and must be filled out in order to be processed. Thank you</p>
+    </div>
+  </div>
+  <div class="row mb-2">
+    <div class="col-md-6">
+      <p class="m-0 small">Title</p>
+    </div>
+    <div class="col-md-6">
+    <%= form.select(:title, Inquiry.titles.keys.map {|title| [title.titleize,title]}, {}, class: 'w-100 selectBorder')%>
+    </div>
+  </div>
+
+ <% if tour.present? %>
+  <%= form.hidden_field :tour_id, value: tour.id %>
+<% end %>
+  <div class="row mb-2">
+    <div class="col-md-6 small">
+      <%= form.label :first_name %>*<br>
+    </div>
+    <div class="col-md-6">
+      <%= form.text_field :first_name, class: "w-100 selectBorder", required: true %>
+    </div>
+  </div>
+
+
+  <div class="row mb-2">
+  <div class="col-md-6 small">
+    <%= form.label :last_name %>*<br>
+  </div>
+  <div class="col-md-6">
+    <%= form.text_field :last_name, class: "w-100 selectBorder", required: true %>
+  </div>
+</div>
+
+
+  <div class="row mb-2">
+    <div class="col-md-6 small">
+      <%= form.label :Destination %><br>
+    </div>
+    <div class="col-md-6">
+     <%= form.text_field :country, class: "w-100 selectBorder" %>
+     </div>
+  </div>
+
+
+ <div class="row mb-2">
+    <div class="col-md-6 small">
+      <%= form.label :desired_price %><br>
+    </div>
+    <div class="col-md-6">
+     <%= form.text_field :price, class: "w-100 selectBorder" %>
+     </div>
+  </div>
+
+  <div class="row mb-2">
+    <div class="col-md-6 small">
+      <%= form.label :trip_idea_id %>*<br>
+    </div>
+    <div class="col-md-6">
+        <%= form.select(:trip_idea_id, options_for_select(TripIdea.active.map{|c|[c.name, c.id]}), { prompt: 'Select Trip idea' }, { :class => 'form-control' }) %>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <div class="col-md-6 small">
+      <%= form.label :phone %>*<br>
+    </div>
+    <div class="col-md-6">
+      <%= form.text_field :phone, class: "w-100 selectBorder", required: true %>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <div class="col-md-6 small">
+      <%= form.label :email %>*<br>
+    </div>
+    <div class="col-md-6">
+      <%= form.email_field :email, class: "w-100 selectBorder", required: true %>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <div class="col-md-6">
+      <p class="m-0 small">How should we contact you?*</p>
+    </div>
+    <div class="col-md-6">
+    <%= form.select(:contact_method, options_for_select([['Email'], ['Phone']], {selected: :active}),   {}, { class: 'form-control'})  %>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <div class="col-md-6">
+      <p class="m-0 small">Number of passengers*</p>
+    </div>
+    <div class="col-md-6">
+    <%= form.number_field :no_of_passenger, min:1, class: "w-100 selectBorder" %>
+    </div>
+  </div>
+
+
+  <div class="row mb-2">
+    <div class="col-md-6">
+      <p class="m-0 small">Date of departure*</p>
+    </div>
+    <div class="col-md-6">
+    <%= form.date_select :departure_date, {}, min: Date.today, class: "selectBorder" %> 
+    </div>
+  </div>
+
+
+  <div class="row mb-2">
+    <div class="col-md-12">
+      <p class="small">Tell us more about how we can help:</p>
+    </div>
+    <div class="col-md-12">
+      <%= form.text_area :description, class: "selectBorder w-100" %> 
+    </div>
+  </div>
+
+  <div class="row pb-4 mb-2">
+    <div class="col-md-12">
+      <p class="small justify">Get travel tips and ideas, offers, and contests delivered to your inbox.  We guarantee 100% privacy. Your information will not be shared, and you can unsubscribe at any time.</p>
+    </div>
+
+
+    <div class="col-md-6">
+      </div>
+    <div class="col-md-6">         
+    <%= form.submit class: "inquiryBtn w-100 mt-3" %>              
+    </div>
+  </div>
+
+</div>
+
+<% end %>

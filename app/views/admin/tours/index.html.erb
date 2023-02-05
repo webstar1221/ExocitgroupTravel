@@ -1,0 +1,43 @@
+<div class="content-wrapper">
+    <div class="container-xxl flex-grow-1 container-p-y">
+    <%= render 'shared/messages' %>
+      <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Admin /</span> Tours</h4>
+
+      <%= link_to 'New Tour', new_admin_tour_path,class: 'btn btn-primary mb-3  ' %></td>
+      <div class="card">
+        <h5 class="card-header">Tours</h5>
+        <div class="table-responsive text-nowrap">
+
+          <table class="table" id="dataTable">
+            <thead>
+              <tr>
+                <th>Sr.No</th>
+                <th>Desination</th>
+                <th>Country</th>
+                <th>Duration</th>
+                <th>Price</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                <% @tours.each_with_index do |tour, index| %>
+                <tr>
+                    <td><%= index+1 %>  </td>
+                    <td><%= tour.destination_name %>  </td>
+                    <td><%= tour.country.name %>  </td>
+                    <td><%= tour.duration %>  </td>
+                    <td><%= tour.price %>  </td>
+                    <td class="d-flex">
+
+                    <%= button_to "Edit", edit_admin_tour_path(tour), method: :get, class: "btn btn-sm btn-primary"  %>
+                    <%= button_to "Delete", admin_tour_path(tour), method: :delete, class: "btn btn-warning btn-sm"  %>
+                    </td>
+                </tr>
+                <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+   
+   
+    </div>

@@ -1,0 +1,46 @@
+<div class="content-wrapper">
+    <div class="container-xxl flex-grow-1 container-p-y">
+    <%= render 'shared/messages' %>
+      <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Admin /</span> Inquiries</h4>
+
+      <div class="card">
+        <h5 class="card-header">Inquiries</h5>
+        <div class="table-responsive text-nowrap">
+
+          <table class="table" id="dataTable">
+            <thead>
+              <tr>
+                <th>Sr.No</th>
+                <th>Desination</th>
+                <th>Phone</th>
+                <th>Price</th>
+                <th>Email</th>
+                <th>Description</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                <% @inquiries.each_with_index do |inquiry, index| %>
+                <tr>
+                <td><%= index+1 %>  </td>
+                <td><%= inquiry.tour&.destination_name %>  </td>
+                <td><%= inquiry.phone %>  </td>
+                <td><%= inquiry.price %>  </td>
+                <td><%= inquiry.email %>  </td>
+                <td><%= inquiry.description %>  </td>
+
+
+                <td class="d-flex">
+                  <%= button_to "View", admin_inquiry_path(inquiry), method: :get, class: "btn btn-sm btn-primary"  %>
+                  <%= button_to "Delete", admin_inquiry_path(inquiry), method: :delete, class: "btn btn-warning btn-sm"  %>
+                </td>
+
+                </tr>
+                <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+   
+   
+    </div>

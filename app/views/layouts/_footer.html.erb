@@ -1,0 +1,72 @@
+
+    <footer class="text-center text-lg-start text-white arjFooter1">
+<div class="container p-4 pb-0">
+
+  <div class="quickLiks d-flex justify-content-center">
+            <ul>
+              <% Page.active.each do |page| %>
+              <li>
+                <%= link_to page.name, pages_path(page), class: 'whiteLink' %>
+              </li>
+            <% end %>
+            </ul>
+          </div>
+
+
+  <section class="p-3 pt-0">
+    <div class="row d-flex align-items-center">
+
+      <div class="col-md-7 col-lg-8 text-center text-md-start">
+
+        <div class="p-3">
+          © 2023 Copyright:
+          <a class="text-white" href="https://www.exoticgrouptravel.com">www.exoticgrouptravel.com</a>
+        </div>
+
+      </div>
+
+
+
+      <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
+        <a class="btn btn-outline-light btn-floating m-1" class="text-white" ahref="https://www.facebook.com/people/Exotic-Group-Travel/100082996557861/" role="button"><i class="fab fa-facebook-f"></i></a>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+</footer>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<script src="https://kit.fontawesome.com/38860492c4.js" crossorigin="anonymous"></script> 
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<%= javascript_include_tag 'application' %>
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6384df63b0d6371309d18c32/1givgh7p3';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+
+</body>
+
+</html>
+
+ 
+
+
+
+
+
+
+

@@ -1,0 +1,24 @@
+<div class="customCardOne">
+<div class="cardTop">
+
+<%= link_to tour_details_path(tour) do %>
+  <% if tour.cover_image.attached? %>
+  <%= image_tag tour.cover_image, class: "img-fluid" %>
+  <% end %>
+<% end %>
+</div>
+<div class="cardBottom p-2">
+  <h3 class="headingTwo m-0"><%= tour.country.name %></h3>
+  <p class="medium textJustify small"> <b><%= tour.destination_name %> </b></p>
+  <p class="small textJustify"><%= tour.short_description %></< /p>
+</div>
+
+<div class="button p-2 d-flex justify-content-end">
+<%= link_to tour_details_path(tour), class: 'detailsBtn' do %>
+    <span>See Details </span>
+    <i class="fa-solid fa-circle-arrow-right"></i> 
+  <% end %>
+</div>
+
+
+</div>
