@@ -1,0 +1,110 @@
+
+<div class="container-fluid p-0">
+  <img src="./assets/images/verticleTop.jpg" class="img-fluid" alt="">
+</div>
+
+ 
+<section class="pageNavigation">
+  <div class="container">
+    <div class="navigationBar py-2 py-md-0">
+      <div class="clippy d-none d-md-flex"> You Are Here</div>
+      <div class="mx-2"><a href="/">Home </a></div>
+      <div>  </div>
+    </div>
+  </div>
+</section>
+
+<section class="region">
+  <div class="container">
+    <div class="row">
+
+    <div class="col-md-4 mb-3 mb-lg-0">
+      <%# <%= render partial: "shared/filters" %>
+          <%= render partial: "shared/inquiry_form", locals: { tour: @tour } %>
+
+    </div>
+  
+      <div class="col-lg-8 mb-3 mb-lg-0">
+        <%= render partial: "shared/messages" %>
+        <h4><%= @tour.destination_name  %></h4>
+        <div class="borderBottomBlue">
+        </div>
+
+        <div class="socialMedia ">
+
+          <div class="mediaRight  align-items-center">
+            <p class="small main m-0">
+              <b>Duration: </b> <span class=" bold300 small"><%= @tour.duration %> Days</span> &nbsp; &nbsp;
+              <b>Prices From: </b> <span class=" bold300 small"> <%= number_to_currency(@tour.price) %></span>&nbsp; &nbsp;
+              <% if @tour.trip_idea.present? %>
+              <b>Trip Type: </b> <span class=" bold300 small"> <%= @tour.trip_idea.name %></span>
+              <% end %>
+            </p>
+          </div>
+
+          <div class="meidaLeft">
+            <div class="leftIcon">
+              <a href="https://www.facebook.com/people/Exotic-Group-Travel/100082996557861/">
+                <i class="fa-brands fa-facebook-f"></i>
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="tripSectionOne  mt-4">
+
+
+          <div class="row">
+            <div class="col-12">
+              <div class="mainDest">
+                <div id="mainDestIndicators" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-indicators">
+                    <% @count = 0 %>
+                    <% @tour.images.each do |img| %>
+                    <button type="button" data-bs-target="#mainDestIndicators" <% if @count == 0 %> class="active" <% end %>  data-bs-slide-to="<%= @count %>" aria-current="true" aria-label="Slide 1"></button>
+                    <% @count += 1 %>                      
+                    <% end %>
+                  </div>
+                  <div class="carousel-inner">
+
+                  <% if @tour.images.present?  %>
+                    <div class="carousel-item active">
+                        <%= image_tag @tour.images.first, class: "d-block w-100", alt: 'Image not found' %>
+                        <div class="carousel-caption d-none d-md-block">
+                        </div>
+                    </div>
+                  <% end %>
+
+
+                  <% @tour.images.offset(1).each do |image| %>
+                    <div class="carousel-item">
+                      <%= image_tag image, class: "d-block w-100", alt: 'Image not found' %>
+                      <div class="carousel-caption d-none d-md-block">
+                      </div>
+                    </div>
+                  <% end %>  
+                  </div>
+
+                </div>
+
+                <div class="mainDestContent mt-3"> <%= @tour.description.html_safe  %> </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+
+        <div class="tripSectionThree mt-4">
+          <%# <%= render partial: "shared/inquiry_form", locals: { tour: @tour } %> 
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

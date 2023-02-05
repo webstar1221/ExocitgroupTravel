@@ -1,0 +1,15 @@
+  <%= form_for [:admin, @trip_idea] do |form| %>
+    <div class="form-group">
+      <%= form.label :name %><br>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+    <%= form.label :active, 'Active', class: 'form-label' %><br/>
+    <%= form.select(:active, options_for_select([['True', true], ['False', false]], { selected: @trip_idea.active } ), { }, { class: 'form-control'})  %>
+   </div>
+  
+    <div>
+      <%= form.submit class: "btn btn-primary mt-2" %>
+    </div>
+  <% end %>

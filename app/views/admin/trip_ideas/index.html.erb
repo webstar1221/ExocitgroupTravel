@@ -1,0 +1,39 @@
+
+<%# <%= link_to 'New Trip Idea', new_trip_idea_path %> 
+
+
+<div class="content-wrapper">
+    <div class="container-xxl flex-grow-1 container-p-y">
+    <%= render 'shared/messages' %>
+      <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Admin /</span> Trip Ideas</h4>
+      <%= link_to 'New Trip Idea', new_admin_trip_idea_path,class: 'btn btn-primary mb-3  ' %></td>
+      <div class="card">
+        <h5 class="card-header">Trip Ideas</h5>
+        <div class="table-responsive text-nowrap">
+        <table class="table" id="dataTable"> 
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Active</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @trip_ideas.each do |trip_idea| %>
+              <tr>
+                <td><%= trip_idea.name %></td>
+                <td><span class="badge bg-label-info me-1"><%= trip_idea.active %></span></td>
+                <td class="d-flex">
+                  <%= button_to 'Edit', edit_admin_trip_idea_path(trip_idea),method: :get, class: "btn btn-primary btn-sm" %>
+                  <%= button_to 'Destroy', admin_trip_idea_path(trip_idea), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-warning btn-sm" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+      </table>
+        </div>
+      </div>
+   
+   
+    </div>

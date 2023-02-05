@@ -1,0 +1,38 @@
+<div class="content-wrapper">
+    <div class="container-xxl flex-grow-1 container-p-y">
+    <%= render 'shared/messages' %>
+      <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Admin /</span> Regions</h4>
+
+      <%= link_to 'New Region', new_admin_region_path,class: 'btn btn-primary mb-3  ' %></td>
+      <div class="card">
+        <h5 class="card-header">Region</h5>
+        <div class="table-responsive text-nowrap">
+
+          <table class="table" id="dataTable">
+            <thead>
+              <tr>
+                <th>Sr.No</th>
+                <th>Country</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                <% @regions.each_with_index do |region, index| %>
+                <tr>
+                    <td><%= index+1 %>  </td>
+                    <td><%= region.region_name %>  </td>
+                    <td><span class="badge bg-label-info me-1"><%= region.active %>  </span></td>
+                    <td class="d-flex">
+                    <%= button_to "Edit",  edit_admin_region_path(region), method: :get,  class: "btn btn-primary btn-sm"  %>
+                    <%= button_to "Delete",  admin_region_path(region), method: :delete, class: "btn btn-warning btn-sm"  %>
+                    </td>
+                </tr>
+                <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+   
+   
+    </div>
