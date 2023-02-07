@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get '/pages/:id', to: "homes#pages", as: :pages
   get '/leavemessage', to: "homes#leavemessage", as: :leavemessage
 
+  get '/auth/:provider/callback' => 'sessions#omniauth'
+
   devise_for :admin_user, path: 'admin/', controllers: {
     unlocks: 'devise/unlocks',
     passwords: 'devise/passwords',
