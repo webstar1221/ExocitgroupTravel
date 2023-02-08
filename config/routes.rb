@@ -10,11 +10,7 @@ Rails.application.routes.draw do
   get '/pages/:id', to: "homes#pages", as: :pages
   get '/leavemessage', to: "homes#leavemessage", as: :leavemessage
 
-  # Login, Logout with Google auth
-  # get '/signup' => ''
-
   get '/auth/:provider/callback', to: 'sessions#omniauth'
-  get 'auth/failure', to: redirect('/')
 
   devise_for :admin_user, path: 'admin/', controllers: {
     unlocks: 'devise/unlocks',
