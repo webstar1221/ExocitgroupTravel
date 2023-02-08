@@ -310,6 +310,7 @@ DEPENDENCIES
   ed25519 (>= 1.2, < 2.0)
   friendly_id (~> 5.4.0)
   jbuilder (~> 2.7)
+  jwt
   listen (~> 3.3)
   net-ssh (>= 6.0.2)
   omniauth
