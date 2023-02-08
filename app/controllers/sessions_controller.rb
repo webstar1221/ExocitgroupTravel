@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
     user = AdminUser.from_omniauth(request.env['omniauth.auth'])
     if user.valid?
       session[:user_id] = user.id
-      redirect_to after_sign_in_path_for(user)
+      sign_in_and_redirect user, event: :authentication
     else
       redirect_to '/admin/sign_in'
     end
