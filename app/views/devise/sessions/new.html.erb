@@ -20,6 +20,14 @@
             <div class="actions"><%= f.submit "Log in", class: "btn btn-primary" %> </div>
             <br/>
             <% end %>
+
+            <%# Add login with google account Button  %>
+            <%# updated by serhii 2023_2_9 %>
+            <%= button_to  '/auth/google_oauth2', class: 'btn btn-info' do %>
+              <iconify-icon icon="mdi:google" class="align-middle"></iconify-icon>
+              <span class="align-middle">Log in with Google</span>
+            <% end %>
+
           </div>
         </div>
       </div>
